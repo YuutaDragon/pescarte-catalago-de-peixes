@@ -202,7 +202,7 @@ export function SuggestionForm({ id, states } : SuggestionProps) {
         />
 
         <div className="flex gap-2 md:justify-between">
-          <Link href="/">
+          <Link href="/" className="w-full">
             <Button variant="cancel" className="w-full">Cancel</Button>
           </Link>
           <Button variant="submit" className="w-full" type="submit">Enviar</Button>
