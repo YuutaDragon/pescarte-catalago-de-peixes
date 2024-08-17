@@ -14,6 +14,7 @@ import { State } from "@/models/State";
 import { LocalityService } from "@/services";
 import { useCallback, useEffect, useState } from "react";
 import { useWatch } from "react-hook-form";
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type SuggestionProps = {
   id: string
@@ -21,6 +22,7 @@ type SuggestionProps = {
 }
 
 export function SuggestionForm({ id, states } : SuggestionProps) {
+  const [captcha, setCaptcha] = useState<string | null>(null)
   const [municipalities, setMunicipalities] = useState<City[]>([])
   const [communities, setCommunities] = useState<CommunityOut[]>([])
 
@@ -60,7 +62,7 @@ export function SuggestionForm({ id, states } : SuggestionProps) {
     <Form {...form}>
       <form
         className="w-full space-y-8"
-        onSubmit={form.handleSubmit((data) => onSubmit(data, id))}>
+        onSubmit={form.handleSubmit((data) => onSubmit(data, id, captcha))}>
 
         <FormField
           name="name"
@@ -200,6 +202,8 @@ export function SuggestionForm({ id, states } : SuggestionProps) {
             </FormItem>
           )}
         />
+
+        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} className='mx-auto w-[300px]' onChange={setCaptcha}/>
 
         <div className="flex gap-2 md:justify-between">
           <Link href="/" className="w-full">

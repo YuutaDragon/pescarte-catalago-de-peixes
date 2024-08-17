@@ -25,20 +25,36 @@ export const useSuggest = () => {
     mode: "onChange",
   })
   
-  const onSubmit = (data: SuggestionFormValues, fish_id: string) => {
-    SuggestionNameService.create({
-      fish_id: fish_id,
-      name: data.name,
-      email: data.email,
-      community_id: data.community,
-      suggested_name: data.suggestedName,
-    })
+  const onSubmit = async (data: SuggestionFormValues, fish_id: string, token: string | null) => {
+    if(token === null) {
+      alert("Você é um robô?")
+      return
+    }
+
+    try {
+      await fetch("/api", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      });
+      
+      SuggestionNameService.create({
+        fish_id: fish_id,
+        name: data.name,
+        email: data.email,
+        community_id: data.community,
+        suggested_name: data.suggestedName,
+      })
+    } catch (e) {
+      alert("Erro ao enviar sugestão")
+    }
   }
 
   return {
     form,
     onSubmit
   }
-}  
-
-
+}

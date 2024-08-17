@@ -31,6 +31,8 @@ type SearchFormValues = z.infer<typeof searchFormSchema>
 const defaultValues: Partial<SearchFormValues> = {
   uf: "RJ",
   municipality_id: "",
+  scientific_name: "",
+  common_name: "",
 }
 
 type SearchFormProps = {
@@ -237,8 +239,9 @@ export function SearchForm({states} : SearchFormProps) {
         </div>
 
 
-        <div className="flex gap-2 md:justify-between">
+        <div className="flex flex-col space-y-2 gap-2 md:justify-between">
           <Button variant="submit" className="w-full" type="submit">Pesquisar</Button>
+          <Button variant="secondary" className="w-full" onClick={() => form.reset(defaultValues)}>Limpar</Button>
         </div>
       </form>
     </Form>

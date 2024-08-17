@@ -17,7 +17,7 @@ export async function CardFishTable({ search }: CardFishTablePros) {
   return (
     <div className = "flex flex-col gap-6 mt-12 mb-20" >
       {fish.length > 0 ? (
-        <div>
+        <div className="space-y-4">
           {
             fish.map((fish) => {
               return (
