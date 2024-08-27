@@ -6,10 +6,10 @@ import { Work_Sans } from 'next/font/google'
 const workSans = Work_Sans({ subsets: ['latin']})
 
 export const metadata: Metadata = {
-  title: 'Pescarte',
+  title: 'Catálago de Peixes',
   description: 'Pescarte - Uma rede social regional integrada por pescadores artesanais',
   icons: {
-    icon: '/logo.svg'
+    icon: 'assets/logos/logo.svg',
   }
 }
 

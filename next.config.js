@@ -7,6 +7,9 @@ const nextConfig = {
                   },
                   {
                         hostname: "www.fishipedia.fr"
+                  },
+                  {
+                        hostname: "pescarte.org.br"
                   }
             ]
       }
