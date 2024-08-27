@@ -9,7 +9,6 @@ export function Footer() {
   return (
     <footer className="flex gap-8 items-center justify-center max-[980px]:flex-col">
       <Image src="https://pescarte.org.br/images/footer_logos-6519e6e1efc1c537d749b6d6b88cd649.png" alt="Footer Pescarte" width={4000} height={100}/>
-
     {/* <div className="flex justify-center gap-8 max-[550px]:flex-col max-[550px]:items-center">
     //     <Image src={ibama_logo} className="w-full h-auto" width={46} height={40} alt="" />
     //     <Image src={uenf_logo} className="w-full h-auto" width={62} height={40} alt="" />
